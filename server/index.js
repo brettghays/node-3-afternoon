@@ -6,6 +6,7 @@ const checkForSession = require('./middlewares/checkForSession');
 
 const sc = require('./controllers/swag_controller');
 const ac = require('./controllers/auth_controller');
+const cc = require('./controllers/cart_controller');
 require ('dotenv').config();
 
 const app = express();
@@ -25,6 +26,10 @@ app.post('/api/login', ac.login);
 app.post('/api/register', ac.register);
 app.post('/api/signout', ac.signout);
 app.get('/api/user', ac.getUser);
+
+app.post('/api/cart', cc.add);
+app.post('/api/cart/checkout', cc.checkout);
+app.delete('/api/cart', cc.delete);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Welcome to the big show on port ${port}!`));

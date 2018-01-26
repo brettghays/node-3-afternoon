@@ -1,7 +1,7 @@
 const users = require('../models/users');
 let id = 1;
 
-export.modules = {
+module.exports = {
     login: (req,res,next) => {
         const {session} = req;
         const {username,password} = req.body;
